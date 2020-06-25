@@ -42,7 +42,11 @@ disaster_categories.csv and disaster_messages.csv were provided by Figure Eight.
 
 ## File Descriptions <a name="files"></a>
 
-There are two Python scripts. The first one is process_data.py, which includes all the tasks of the ETL process such as load datasets, merge them and and store them in a SQL database. To run this script: 'python data/process_data.py data/disaster_messages.csv data/disaster_categories.csv data/DisasterResponse.db'. The second script is train_classifier.py, which is in charge of load the data from SQL database, split the data into training and test datasets, build a pipeline model which use GridSearchCV and then train, predict, and measure the performance of the model. To run ML pipeline:'python models/train_classifier.py data/DisasterResponse.db models/classifier.pkl'. Finally, there is a web app that first shows the Distribution of Message Genres in a plot, a text box to enter the message and it will be classified according to the Machine Learning model, and the web app will be shown the categories of the message.
+There are two Python scripts. The first one is process_data.py, which includes all the tasks of the ETL process such as load datasets, merge them and and store them in a SQL database. To run this script: 'python data/process_data.py data/disaster_messages.csv data/disaster_categories.csv data/DisasterResponse.db'. 
+
+The second script is train_classifier.py, which is in charge of load the data from SQL database, split the data into training and test datasets, build a pipeline model which use GridSearchCV and then train, predict, and measure the performance of the model. To run ML pipeline:'python models/train_classifier.py data/DisasterResponse.db models/classifier.pkl'. 
+
+Finally, there is a web app that first shows the Distribution of Message Genres in a plot, a text box to enter the message and it will be classified according to the Machine Learning model, and the web app will be shown the categories of the message.
 
 
 ## Results<a name="results"></a>
