@@ -52,6 +52,10 @@ In the following picture you can see that I include a 'Top Ten Categories Distri
 
 <img width="1155" alt="Screen Shot 2020-06-25 at 14 35 05" src="https://user-images.githubusercontent.com/45834444/85788174-29550500-b6f2-11ea-90f2-89d86744e816.png">
  
+*Note:* The dataset is unbalance, as you can see in the following picture.
+
+![inbalanced_genre](https://user-images.githubusercontent.com/45834444/85789964-168fff80-b6f5-11ea-884c-446f65a6847b.png)
+
 ## Results<a name="results"></a>
 
 The results of this project is the categories' message which are highlighted in green as you can see in the following screenshot.
