@@ -48,6 +48,7 @@ The second script is train_classifier.py, which is in charge of load the data fr
 
 Finally, there is a web app that first shows the Distribution of Message Genres in a plot, a text box to enter the message and it will be classified according to the Machine Learning model, and the web app will be shown the categories of the message.
 
+<img width="1155" alt="Screen Shot 2020-06-25 at 14 35 05" src="https://user-images.githubusercontent.com/45834444/85788174-29550500-b6f2-11ea-90f2-89d86744e816.png">
 
 ## Results<a name="results"></a>
 
