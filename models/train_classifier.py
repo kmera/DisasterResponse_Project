@@ -74,23 +74,19 @@ def build_model():
     '''
     
     pipeline = Pipeline([
-            ('features', FeatureUnion([
-                ('nlp_pipeline', Pipeline([
-                    ('vect', CountVectorizer(tokenizer=tokenize)),
-                    ('tfidf', TfidfTransformer())
-                ]))
-            ])),
-            ('mclf', MultiOutputClassifier(RandomForestClassifier(n_jobs=-1)))
+        ('vect', CountVectorizer(tokenizer=tokenize)),
+        ('tfidf', TfidfTransformer()),
+        ('mclf', MultiOutputClassifier(RandomForestClassifier(n_jobs=-1)))
         ])
 
     # specify parameters for grid search
     parameters = {
-        'features__nlp_pipeline__tfidf__use_idf': (True, False),
+        'tfidf__use_idf': (True, False),
         'mclf__estimator__n_estimators': [10, 100]
     }
     
     # create grid search object
-    cv = GridSearchCV(pipeline, param_grid=parameters, n_jobs=-1, cv=2)
+    cv = GridSearchCV(pipeline, param_grid=parameters)
     
     return cv
 
