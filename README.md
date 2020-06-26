@@ -50,7 +50,7 @@ Finally, there is a web app that first shows the Distribution of Message Genres 
 
 In the following picture you can see that I include a 'Top Ten Categories Distribution' barplot of the dataset. The top three categories are: related, aid_related andweather_related  
 
-<img width="1155" alt="Screen Shot 2020-06-25 at 14 35 05" src="https://user-images.githubusercontent.com/45834444/85788174-29550500-b6f2-11ea-90f2-89d86744e816.png">
+![Screen Shot 2020-06-26 at 08 34 49](https://user-images.githubusercontent.com/45834444/85862969-168d0f80-b788-11ea-84fb-3e77db69932c.png)
 
 ## Results<a name="results"></a>
 
