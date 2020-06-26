@@ -11,6 +11,9 @@ from plotly.graph_objs import Bar
 from sklearn.externals import joblib
 from sqlalchemy import create_engine
 
+from wordcloud import WordCloud
+import plotly.express as px
+
 
 app = Flask(__name__)
 
@@ -40,17 +43,38 @@ def index():
     
     # extract data needed for visuals
     # TODO: Below is an example - modify to extract data for your own visuals
-    genre_counts = df.iloc[:,4:].sum().sort_values(ascending=False).drop_duplicates().head(10)
+    
+    # graph one
+    cat_counts = df.iloc[:,4:].sum().sort_values(ascending=False).drop_duplicates().head(10)
+    cat_names = list(cat_counts.index)
+    
+    # graph two
+    genre_counts = df.groupby('genre').count()['message']
     genre_names = list(genre_counts.index)
+    
+    # graph three
+    text = ' '.join(df.message.tolist())
+    token = tokenize(text)
+    all_token = ' '.join(token)
+    wordcloud = WordCloud(max_font_size=70, max_words= 200, background_color="black").generate(all_token)
+    
+    wordcloud_fig = px.imshow(wordcloud)
+    wordcloud_fig.update_layout(
+        title=dict(text='150 Most Common Words in Disaster Scenarios', x=0.5),
+        xaxis={'showgrid': False, 'showticklabels': False, 'zeroline': False},
+        yaxis={'showgrid': False, 'showticklabels': False, 'zeroline': False},
+        hovermode=False
+    )
     
     # create visuals
     # TODO: Below is an example - modify to create your own visuals
     graphs = [
+        # graph one
         {
             'data': [
                 Bar(
-                    x=genre_names,
-                    y=genre_counts
+                    x=cat_names,
+                    y=cat_counts
                 )
             ],
 
@@ -60,11 +84,33 @@ def index():
                     'title': "Count"
                 },
                 'xaxis': {
-                    'title': "Categories"
+                    'title': "Category"
+                }
+            }
+        },
+        
+        # graph two
+        {
+            'data':[
+                Bar(
+                    x=genre_names,
+                    y=genre_counts
+                )
+            ],
+            
+            'layout':{
+                'title': 'Distribution of Message Genres',
+                'yaxis': {
+                    'title': "Count"
+                },
+                'xaxis': {
+                    'title': "Genre"
                 }
             }
         }
     ]
+    
+    graphs.append(wordcloud_fig)
     
     # encode plotly graphs in JSON
     ids = ["graph-{}".format(i) for i, _ in enumerate(graphs)]
