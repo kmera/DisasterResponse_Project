@@ -57,6 +57,7 @@ In the following picture you can see that I include a 'Top Ten Categories Distri
 The results of this project is the categories' message which are highlighted in green as you can see in the following screenshot.
 
 
-<img width="1181" alt="Screen Shot 2020-06-25 at 14 52 03" src="https://user-images.githubusercontent.com/45834444/85789136-acc32600-b6f3-11ea-831b-722c40105bef.png">
+![Screen Shot 2020-06-26 at 08 38 29](https://user-images.githubusercontent.com/45834444/85863277-9024fd80-b788-11ea-9dbf-af3376d474e7.png)
+
 
 
