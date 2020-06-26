@@ -45,10 +45,13 @@ def clean_data(df):
     
     for column in categories:
         # set each value to be the last character of the string
-        categories[column] = categories[column].apply(lambda x: x[-1:])
+       categories[column] = categories[column].astype(str).str[-1]
     
         # convert column from string to numeric
-        categories[column] = categories[column].astype("int")
+        categories[column] = categories[column].astype(int)
+    
+    # replace '2' with the mode value in 'related' column
+    categories['related'] = categories['related'].replace(2, 1)
     
     # drop the original categories column from `df`
     df.drop('categories', axis=1, inplace=True)
@@ -69,7 +72,7 @@ def save_data(df, database_filename):
     '''
         
     engine = create_engine('sqlite:///'+database_filename)
-    df.to_sql('DisasterResponse', engine, index=False)
+    df.to_sql('DisasterResponse', engine, index=False, if_exists='replace')
 
 
 def main():
